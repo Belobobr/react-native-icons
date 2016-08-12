@@ -5,8 +5,9 @@
 
 'use strict';
 
-var React = require('react-native');
-var { StyleSheet, View, Dimensions} = React;
+var React = require('react');
+var ReactNative = require('react-native');
+var { StyleSheet, View, Dimensions} = ReactNative;
 
 var DummyTab = React.createClass({
   render: function() {
@@ -15,8 +16,8 @@ var DummyTab = React.createClass({
     }
     return (
       <View style={[this.props.style, styles.tab]}>
-        {this.props.children}
-      </View>
+    {this.props.children}
+    </View>
     );
   }
 });

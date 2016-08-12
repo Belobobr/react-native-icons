@@ -5,8 +5,9 @@
  */
 'use strict';
 
-var React = require('react-native');
-var { StyleSheet, View, requireNativeComponent, processColor } = React;
+var ReactNative = require('react-native');
+var React = require('react');
+var { StyleSheet, View, requireNativeComponent, processColor } = ReactNative;
 var shimAssert = require('./shim-assert');
 
 var ICON_REF = 'icon';

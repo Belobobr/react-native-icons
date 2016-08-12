@@ -5,8 +5,9 @@
 
 'use strict';
 
-var React = require('react-native');
-var { StyleSheet, View, Dimensions} = React;
+var React = require('react');
+var ReactNative = require('react-native');
+var { StyleSheet, View, Dimensions} = ReactNative;
 
 var DummyTabBarIOS = React.createClass({
   render: function() {

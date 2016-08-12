@@ -5,8 +5,9 @@
  */
 'use strict';
 
-var React = require('react-native');
-var { StyleSheet, requireNativeComponent, Animated, Easing, processColor } = React;
+var ReactNative = require('react-native');
+var React = require('react');
+var { StyleSheet, requireNativeComponent, Animated, Easing, processColor } = ReactNative;
 
 var shimAssert = require('./shim-assert');
 
@@ -69,8 +70,8 @@ class LoadingImage extends React.Component {
     };
 
     return <Animated.View style={[styles.base, style, transformStyle]}>
-      <SMXLoadingImageView style={{backgroundColor: 'transparent'}} {...nativeProps} />
-    </Animated.View>;
+  <SMXLoadingImageView style={{backgroundColor: 'transparent'}} {...nativeProps} />
+  </Animated.View>;
   }
 }
 

@@ -5,8 +5,9 @@
  */
 'use strict';
 
-var React = require('react-native');
-var { StyleSheet, View, requireNativeComponent, Animated, Easing, processColor } = React;
+var ReactNative = require('react-native');
+var React = require('react');
+var { StyleSheet, View, requireNativeComponent, Animated, Easing, processColor } = ReactNative;
 
 var shimAssert = require('./shim-assert');
 
@@ -42,56 +43,56 @@ var SMXLoadingImage = React.createClass({
 
   setNativeProps(props:Object) {
 
-  },
+},
 
-  _animate: function () {
-    this.state.angle.setValue(0);
-    Animated.timing(this.state.angle, {
-      toValue: 360,
-      duration: 1200,
-      easing: Easing.linear
-    }).start(this._animate);
-  },
+_animate: function () {
+  this.state.angle.setValue(0);
+  Animated.timing(this.state.angle, {
+    toValue: 360,
+    duration: 1200,
+    easing: Easing.linear
+  }).start(this._animate);
+},
 
-  componentDidMount: function () {
-    this._animate();
-  },
+componentDidMount: function () {
+  this._animate();
+},
 
-  render: function ():ReactElement {
-    var transformStyle = {
-      transform: [
-        {
-          rotate: this.state.angle.interpolate({
-            inputRange: [0, 360],
-            outputRange: ['0deg', '360deg']
-          })
-        }
-      ]
-    };
+render: function ():ReactElement {
+  var transformStyle = {
+    transform: [
+      {
+        rotate: this.state.angle.interpolate({
+          inputRange: [0, 360],
+          outputRange: ['0deg', '360deg']
+        })
+      }
+    ]
+  };
 
-    var style = [styles.base, this.props.style];
+  var style = [styles.base, this.props.style];
 
-    shimAssert.basic(style, 'style must be initialized');
+  shimAssert.basic(style, 'style must be initialized');
 
-    var name = this.props.name;
-    shimAssert.basic(name, 'name must be initialized');
+  var name = this.props.name;
+  shimAssert.basic(name, 'name must be initialized');
 
-    var size = this.props.size;
-    shimAssert.basic(size, 'size must be initialized');
+  var size = this.props.size;
+  shimAssert.basic(size, 'size must be initialized');
 
-    var color = this.props.color;
+  var color = this.props.color;
 
-    var nativeProps = Object.assign({},this.props);
-    nativeProps.icon = {
-      name: name,
-      size: size,
-      color: processColor(color)
-    };
+  var nativeProps = Object.assign({},this.props);
+  nativeProps.icon = {
+    name: name,
+    size: size,
+    color: processColor(color)
+  };
 
-    return <Animated.View style={[styles.base, style, transformStyle]}>
-      <SMXLoadingImageView style={{backgroundColor: 'transparent'}} {...nativeProps} />
-    </Animated.View>;
-  }
+  return <Animated.View style={[styles.base, style, transformStyle]}>
+<SMXLoadingImageView style={{backgroundColor: 'transparent'}} {...nativeProps} />
+</Animated.View>;
+}
 });
 
 
